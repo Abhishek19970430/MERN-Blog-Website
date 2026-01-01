@@ -68,7 +68,7 @@ const Blog = () => {
     useEffect(() => {
         const getAllPublsihedBlogs = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/api/v1/blog/get-published-blogs`, { withCredentials: true })
+                const res = await axios.get(`https://blog-backend-0fl9.onrender.com/api/v1/blog/get-published-blogs`, { withCredentials: true })
                 if (res.data.success) {
                     dispatch(setBlog(res.data.blogs))
                 }

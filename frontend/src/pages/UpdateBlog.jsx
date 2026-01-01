@@ -97,7 +97,7 @@ const UpdateBlog = () => {
         console.log("action", action);
 
         try {
-            const res = await axios.patch(`http://localhost:8000/api/v1/blog/api/v1/blog/${id}`, {
+            const res = await axios.patch(`https://blog-backend-0fl9.onrender.com/api/v1/blog/api/v1/blog/${id}`, {
                 params: {
                     action
                 },
@@ -118,7 +118,7 @@ const UpdateBlog = () => {
 
     const deleteBlog = async () => {
         try {
-            const res = await axios.delete(`http://localhost:8000/api/v1/blog/api/v1/blog/delete/${id}`, { withCredentials: true })
+            const res = await axios.delete(`https://blog-backend-0fl9.onrender.com/api/v1/blog/api/v1/blog/delete/${id}`, { withCredentials: true })
             if (res.data.success) {
                 const updatedBlogData = blog.filter((blogItem) => blogItem?._id !== id);
                 dispatch(setBlog(updatedBlogData))
