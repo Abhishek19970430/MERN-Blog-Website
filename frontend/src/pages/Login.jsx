@@ -27,64 +27,6 @@ const Login = () => {
     }));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(input);
-
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.post(`http://localhost:8000/api/v1/user/login`, input, {
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       withCredentials: true
-  //     });
-  //     if (response.data.success) {
-  //       navigate('/')
-  //       dispatch(setUser(response.data.user))
-  //       toast.success(response.data.message)
-  //     }
-  //   } catch (error) {
-  //     console.log(error.response.data.message);
-
-  //   }
-
-  // };
-
-// const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       setLoading(true);
-//       const response = await axios.post(
-//         `http://localhost:8000/api/v1/user/login`,
-//         input,
-//         {
-//           headers: {
-//             "Content-Type": "application/json"},
-//           withCredentials: true, 
-//         }
-//       );
-
-//       console.log(response.data.user);
-//       if (response.data.success) {
-        
-//         navigate("/");
-//         dispatch(setUser(response.data.user));
-//         console.log(response.data.user);
-//         //dispatch method ne user ko store me save kar diya 
-//         toast.success(response.data.message);
-       
-//       } else {
-//         toast.error(response.data.message);
-//       }
-//     } catch (error) {
-//       console.log(error);
-//       // toast.error(error.response.data.message);
-//     }finally{
-//       setLoading(false)
-//     }
-//   };
-
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
