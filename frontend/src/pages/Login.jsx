@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
-import { setUser } from "@/redux/authSlice";
+import { setLoading, setUser } from "../redux/authSlice";
 import auth from "../assets/auth.jpg"
 
 const Login = () => {
@@ -27,28 +27,94 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(input);
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(input);
 
-    try {
-      const response = await axios.post(`https://mern-blog-ha28.onrender.com/api/v1/user/login`, input, {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        withCredentials: true
-      });
-      if (response.data.success) {
-        navigate('/')
-        dispatch(setUser(response.data.user))
-        toast.success(response.data.message)
+  //   try {
+  //     setLoading(true);
+  //     const response = await axios.post(`http://localhost:8000/api/v1/user/login`, input, {
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       withCredentials: true
+  //     });
+  //     if (response.data.success) {
+  //       navigate('/')
+  //       dispatch(setUser(response.data.user))
+  //       toast.success(response.data.message)
+  //     }
+  //   } catch (error) {
+  //     console.log(error.response.data.message);
+
+  //   }
+
+  // };
+
+// const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//       setLoading(true);
+//       const response = await axios.post(
+//         `http://localhost:8000/api/v1/user/login`,
+//         input,
+//         {
+//           headers: {
+//             "Content-Type": "application/json"},
+//           withCredentials: true, 
+//         }
+//       );
+
+//       console.log(response.data.user);
+//       if (response.data.success) {
+        
+//         navigate("/");
+//         dispatch(setUser(response.data.user));
+//         console.log(response.data.user);
+//         //dispatch method ne user ko store me save kar diya 
+//         toast.success(response.data.message);
+       
+//       } else {
+//         toast.error(response.data.message);
+//       }
+//     } catch (error) {
+//       console.log(error);
+//       // toast.error(error.response.data.message);
+//     }finally{
+//       setLoading(false)
+//     }
+//   };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    setLoading(true);
+
+    const response = await axios.post(
+      `http://localhost:8000/api/v1/user/login`,
+      input,
+      {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
       }
-    } catch (error) {
-      console.log(error.response.data.message);
+    );
 
+    if (response.data.success) {
+      dispatch(setUser(response.data.user));
+      toast.success(response.data.message);
+      navigate("/");
+    } else {
+      toast.error(response.data.message);
     }
+  } catch (error) {
+    toast.error(error.response?.data?.message || error.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
-  };
+
+
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div className="flex items-center h-screen md:pt-14 md:h-[760px] ">
