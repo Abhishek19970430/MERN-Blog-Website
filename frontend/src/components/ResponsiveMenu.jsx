@@ -39,7 +39,7 @@ const ResponsiveMenu = ({ openNav, setOpenNav, logoutHandler }) => {
             </div>
             <div className='pb-20'>
                 <h1>
-                    Made with ❤️ with Supreame Power God Shiv Baba
+                    Made with ❤️ With Supreme Power God Shiva
                 </h1>
             </div>
         </div>
